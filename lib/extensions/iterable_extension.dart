@@ -3,4 +3,10 @@ extension IterableExtension<T> on Iterable<T> {
     if (isNotEmpty) return first;
     return null;
   }
+
+  T? firstWhereOrNull(bool Function(T) test) {
+    final result = where(test);
+    if (result.isNotEmpty) return result.first;
+    return null;
+  }
 }
