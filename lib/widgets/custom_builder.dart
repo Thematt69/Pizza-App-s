@@ -37,7 +37,8 @@ class CustomFutureBuilder<T> extends StatelessWidget {
           return errorBuilder?.call(snapshot.error, snapshot.stackTrace) ??
               const SizedBox();
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          return waitingBuilder?.call() ?? const CircularProgressIndicator();
+          return waitingBuilder?.call() ??
+              const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
           return dataBuilder(futureContext, snapshot.data as T);
         } else {
@@ -80,7 +81,8 @@ class CustomStreamBuilder<T> extends StatelessWidget {
           return errorBuilder?.call(snapshot.error, snapshot.stackTrace) ??
               const SizedBox();
         } else if (snapshot.connectionState == ConnectionState.waiting) {
-          return waitingBuilder?.call() ?? const CircularProgressIndicator();
+          return waitingBuilder?.call() ??
+              const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasData) {
           return dataBuilder(futureContext, snapshot.data as T);
         } else {

@@ -1,9 +1,9 @@
 name: pizza_app_s
-description: A new Flutter project.
+description: Choisir votre pizza n'a jamais été aussi simple
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
-version: 0.0.0+1
+version: 1.0.0+6
 
 environment:
   sdk: ">=2.16.1 <3.0.0"
@@ -35,6 +35,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/pizzaBase/
+    - assets/images/pizzaFromage/
+    - assets/images/pizzaIngredient/
+    - assets/images/pizzaViande/
 
   fonts:
     - family: Supersonic-Rocketship

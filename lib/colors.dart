@@ -15,4 +15,6 @@ class CustomColors {
 
   static const Color error = Color(0xFFB00020);
   static const Color onError = Colors.white;
+
+  static const Color green = Color(0xFF06BF34);
 }
