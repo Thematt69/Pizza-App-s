@@ -30,6 +30,7 @@ class CustomFutureBuilder<T> extends StatelessWidget {
       initialData: initialData,
       builder: (futureContext, snapshot) {
         if (snapshot.hasError) {
+          debugPrint('CustomFutureBuilder ERROR => ${snapshot.error}');
           debugPrintStack(
             stackTrace: snapshot.stackTrace,
             label: 'CustomFutureBuilder<$T>',
@@ -74,6 +75,7 @@ class CustomStreamBuilder<T> extends StatelessWidget {
       initialData: initialData,
       builder: (futureContext, snapshot) {
         if (snapshot.hasError) {
+          debugPrint('CustomStreamBuilder ERROR => ${snapshot.error}');
           debugPrintStack(
             stackTrace: snapshot.stackTrace,
             label: 'CustomStreamBuilder<$T>',

@@ -41,12 +41,19 @@ class StoreBloc extends BlocBase {
                 PizzaItem.fromFireStore(snapshot.data()!),
             toFirestore: (value, _) => value.toFirestore(),
           );
+
   final CollectionReference<Pizza> _pizzaCollectionReference =
       FirebaseFirestore.instance.collection('pizza').withConverter<Pizza>(
             fromFirestore: (snapshot, _) =>
                 Pizza.fromFireStore(snapshot.data()!),
             toFirestore: (value, _) => value.toFirestore(),
           );
+
+  Stream<List<Pizza>> get onPizzaChange => _pizzaCollectionReference
+      .orderBy('username')
+      .orderBy('createdTo')
+      .snapshots()
+      .map((event) => event.docs.map((e) => e.data()).toList());
 
   Future<List<PizzaItem>> getPizzaBase() async {
     try {

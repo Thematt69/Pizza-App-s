@@ -27,15 +27,14 @@ class Pizza extends Equatable {
         username: json['username'] as String,
         pizzaBase:
             PizzaItem.fromFireStore(json['pizzaBase'] as Map<String, dynamic>),
-        pizzaViandes: (json['pizzaViandes'] as List<Map<String, dynamic>>)
-            .map((e) => PizzaItem.fromFireStore(e))
+        pizzaViandes: (json['pizzaViandes'] as List)
+            .map((e) => PizzaItem.fromFireStore(e as Map<String, dynamic>))
             .toList(),
-        pizzaIngredients:
-            (json['pizzaIngredients'] as List<Map<String, dynamic>>)
-                .map((e) => PizzaItem.fromFireStore(e))
-                .toList(),
-        pizzaFromages: (json['pizzaFromages'] as List<Map<String, dynamic>>)
-            .map((e) => PizzaItem.fromFireStore(e))
+        pizzaIngredients: (json['pizzaIngredients'] as List)
+            .map((e) => PizzaItem.fromFireStore(e as Map<String, dynamic>))
+            .toList(),
+        pizzaFromages: (json['pizzaFromages'] as List)
+            .map((e) => PizzaItem.fromFireStore(e as Map<String, dynamic>))
             .toList(),
         createdTo: (json['createdTo'] as Timestamp).toDate(),
       );

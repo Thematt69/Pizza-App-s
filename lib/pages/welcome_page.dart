@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:pizza_app_s/consts.dart';
 import 'package:pizza_app_s/models/pizza.dart';
 import 'package:pizza_app_s/pages/base_page.dart';
+import 'package:pizza_app_s/pages/cheat_code_page.dart';
 import 'package:pizza_app_s/widgets/app_scaffold.dart';
 
 class WelcomePage extends StatefulWidget {
@@ -61,9 +62,35 @@ class _WelcomePageState extends State<WelcomePage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    'assets/images/pizza.png',
-                    height: Consts.px200,
+                  GestureDetector(
+                    excludeFromSemantics: true,
+                    onDoubleTap: () {
+                      if (username == 'cheatCode') {
+                        Navigator.pushReplacement(
+                          context,
+                          PageRouteBuilder(
+                            pageBuilder: (_, __, ___) => const CheatCodePage(),
+                            transitionsBuilder: (_, animation, __, child) {
+                              const begin = Offset(1, 0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeOut;
+
+                              final tween = Tween(begin: begin, end: end)
+                                  .chain(CurveTween(curve: curve));
+
+                              return SlideTransition(
+                                position: animation.drive(tween),
+                                child: child,
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    },
+                    child: Image.asset(
+                      'assets/images/pizza.png',
+                      height: Consts.px200,
+                    ),
                   ),
                   const SizedBox(height: Consts.px32),
                   Text(
