@@ -36,10 +36,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/images/pizzaBase/
-    - assets/images/pizzaFromage/
-    - assets/images/pizzaIngredient/
-    - assets/images/pizzaViande/
 
   fonts:
     - family: Supersonic-Rocketship

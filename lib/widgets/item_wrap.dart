@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:pizza_app_s/colors.dart';
 import 'package:pizza_app_s/consts.dart';
@@ -34,13 +35,21 @@ class ItemWrap extends StatelessWidget {
                 borderRadius: const BorderRadius.all(
                   Radius.circular(Consts.px16),
                 ),
-                child: Image.asset(
-                  imageUrl,
+                child: CachedNetworkImage(
+                  imageUrl: imageUrl,
                   height: size,
                   width: size,
                   fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) =>
-                      const Center(child: Icon(Icons.error)),
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      Center(
+                    child: CircularProgressIndicator(
+                      value: downloadProgress.progress,
+                    ),
+                  ),
+                  errorWidget: (context, url, error) {
+                    debugPrint('CachedNetworkImage ERROR => $error');
+                    return const Center(child: Icon(Icons.error));
+                  },
                 ),
               ),
               const SizedBox(height: Consts.px8),
